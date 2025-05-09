@@ -9,10 +9,11 @@ import { Logo } from "./components/Logo";
 import { Menu } from "./components/Menu";
 import "./styles/global.css";
 import "./styles/theme.css";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div className="container-fluid">
+    <>
       <Container>
         <Logo />
       </Container>
@@ -46,12 +47,14 @@ function App() {
           </div>
 
           <div className="formRow">
-            <DefaultButton icon={<PlayCircleIcon />} color="green" />
-            <DefaultButton icon={<StopCircleIcon />} color="red" />
+            <DefaultButton icon={<PlayCircleIcon />} />
           </div>
         </form>
       </Container>
-    </div>
+      <Container>
+        <Footer />
+      </Container>
+    </>
   );
 }
 
