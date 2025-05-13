@@ -10,9 +10,7 @@ export function Menu() {
   function handleThemeChange(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) {
-    event.preventDefault(); // Não segue o link
-
-    console.log("Clicado", Date.now());
+    event.preventDefault(); 
 
     setTheme((prevTheme) => {
       return prevTheme === "dark" ? "light" : "dark";
