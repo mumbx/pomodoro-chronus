@@ -1,61 +1,24 @@
-import { PlayCircleIcon, StopCircleIcon } from "lucide-react";
-import { Container } from "./components/Container";
-import { CountDown } from "./components/CountDown";
-import { Cycles } from "./components/Cycles";
-import { DefaultButton } from "./components/DefaultButton";
-import { DefaultInput } from "./components/DefaultInput";
-import { Heading } from "./components/Heading";
-import { Logo } from "./components/Logo";
-import { Menu } from "./components/Menu";
+import { useState } from "react";
+import { Home } from "./Page/Home";
 import "./styles/global.css";
 import "./styles/theme.css";
-import { Footer } from "./components/Footer";
+import type { TaskStateModel } from "./Models/TaskStateModel";
 
-function App() {
-  return (
-    <>
-      <Container>
-        <Logo />
-      </Container>
-      <Container>
-        <Heading>
-          <Menu />
-        </Heading>
-      </Container>
-      <Container>
-        <CountDown />
-      </Container>
-      <Container>
-        <form className="form" action="">
-          <div className="formRow">
-            <DefaultInput
-              labelText="task"
-              id="meuInput"
-              type="text"
-              placeholder="Digite algo"
-            />
-          </div>
+const initialState: TaskStateModel = {
+  tasks: [],
+  secondsRemaining: 0,
+  formattedSecondsRemaining: '00:00',
+  activeTask: null,
+  currentCycle: 0,
+  config: {
+    workTime: 25,
+    shortBreakTime: 5,
+    longBreakTime: 15,
+  },
+};
 
-          <div className="formRow">
-            <p>Lorem ipsum dolor sit amet.</p>
-            <Cycles />
-          </div>
+export function App() {
+  const [state, setState] = useState(initialState);
 
-          <div className="formRow">
-            <p>Ciclos</p>
-            <p>0 0 0 0 0 0 0</p>
-          </div>
-
-          <div className="formRow">
-            <DefaultButton icon={<PlayCircleIcon />} />
-          </div>
-        </form>
-      </Container>
-      <Container>
-        <Footer />
-      </Container>
-    </>
-  );
+  return <Home state={state} setState={setState} />;
 }
-
-export default App;
