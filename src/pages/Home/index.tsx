@@ -1,7 +1,7 @@
 import { Container } from "../../components/Container";
 import { CountDown } from "../../components/CountDown";
 import { MainForm } from "../../components/MainForm";
-import type { TaskStateModel } from "../../Models/TaskStateModel";
+import type { TaskStateModel } from "../../models/TaskStateModel";
 import { MainTemplate } from "../../templates/MainTemplate";
 
 export type HomeProps = {
