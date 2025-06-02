@@ -7,9 +7,9 @@ import type { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
-import { formatSecondsToMinutes } from "../../utils/formatSecondsToMinutes";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 import { Tips } from "../Tips";
+import { showMessage } from '../../adapters/showMessage';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
@@ -26,7 +26,7 @@ export function MainForm() {
     const taskName = taskNameInput.current.value.trim();
 
     if (!taskName) {
-      alert("Digite algo");
+      showMessage.warn('Digite o nome da tarefa');
       return;
     }
 
@@ -41,10 +41,13 @@ export function MainForm() {
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+    showMessage.success('Tarefa iniciada');
   }
 
   function handleInterruptTask() {
-    dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
+    showMessage.dismiss();
+    showMessage.error('Tarefa interrompida!');
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK });    
   }
 
   return (
