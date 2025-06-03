@@ -3,7 +3,7 @@ import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 
 export function Tips() {
-  const { state }: { state: { activeTask?: { type: 'workTime' | 'shortBreakTime' | 'longBreakTime' }; config: { workTime: number; shortBreakTime: number }; currentCycle: any } } = useTaskContext();
+  const { state }: { state: { activeTask?: { type: 'workTime' | 'shortBreakTime' | 'longBreakTime' } | null; config: { workTime: number; shortBreakTime: number }; currentCycle: any } } = useTaskContext();
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCyleType = getNextCycleType(nextCycle);
 

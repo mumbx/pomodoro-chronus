@@ -17,6 +17,7 @@ export function MainForm() {
 
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCyleType = getNextCycleType(nextCycle);
+  const lastTaskName = state.tasks[state.tasks.length - 1]?.name || '';
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,7 +38,7 @@ export function MainForm() {
       completeDate: null,
       interruptDate: null,
       duration: state.config[nextCyleType],
-      type: nextCyleType,
+      type: nextCyleType,  
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
@@ -60,6 +61,7 @@ export function MainForm() {
           placeholder="Digite algo"
           ref={taskNameInput}
           disabled={!!state.activeTask}
+          defaultValue={lastTaskName}
         />
       </div>
       <div className="formRow">

@@ -1,5 +1,4 @@
-
-import type { TaskModel } from './models/TaskModel';
+import type { TaskModel } from "./TaskModel";
 
 export type TaskStateModel = {
   tasks: TaskModel[];
